@@ -36,7 +36,7 @@ namespace TargaSistemi
             {
                 valoreF += (Convert.ToInt32(caratteri[i]) - 'A') * Math.Pow(10, 3) * Math.Pow(26, i);
             }
-
+             
             Console.WriteLine(valoreF);
             Console.ReadLine();
         }
