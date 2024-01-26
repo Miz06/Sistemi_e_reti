@@ -1,0 +1,411 @@
+!R11:
+ena
+config t
+interface GigabitEthernet7/0 
+ip address 192.168.24.78 255.255.255.240
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.21 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.14 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.80 255.255.255.240 192.168.24.22
+do write 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.48 255.255.255.240 192.168.24.13
+do write 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.96 255.255.255.240 192.168.24.13
+do write 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.112 255.255.255.240 192.168.24.13
+do write 
+end
+exit
+
+
+!R12
+ena
+config t
+interface GigabitEthernet7/0  
+ip address 192.168.24.94 255.255.255.240
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.22 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.18 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.64 255.255.255.240 192.168.24.21
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.96 255.255.255.240 192.168.24.17
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.112 255.255.255.240 192.168.24.17
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.48 255.255.255.240 192.168.24.17
+do write
+end
+exit
+
+
+!R21
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.33 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.26 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface GigabitEthernet7/0  
+ip address 192.168.24.110 255.255.255.240
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.80 255.255.255.240 192.168.24.25
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.112 255.255.255.240 192.168.24.34
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.64 255.255.255.240 192.168.24.25
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.48 255.255.255.240 192.168.24.25
+do write
+end
+exit
+
+
+!R22
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.30 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.34 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface GigabitEthernet7/0  
+ip address 192.168.24.126 255.255.255.240
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.96 255.255.255.240 192.168.24.33
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.80 255.255.255.240 192.168.24.29
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.64 255.255.255.240 192.168.24.29
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.48 255.255.255.240 192.168.24.29
+do write
+end
+exit
+
+
+!R00
+
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.1 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.5 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface GigabitEthernet7/0  
+ip address 192.168.24.62 255.255.255.240
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.96 255.255.255.240 192.168.24.6
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.112 255.255.255.240 192.168.24.6
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.80 255.255.255.240 192.168.24.2
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.64 255.255.255.240 192.168.24.2
+do write
+end
+exit
+
+!R01
+
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.9 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.2 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial7/0 
+ip address 192.168.24.13 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial6/0 
+ip address 192.168.24.17 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.112 255.255.255.240 192.168.24.10
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.96 255.255.255.240 192.168.24.10
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.80 255.255.255.240 192.168.24.18
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.48 255.255.255.240 192.168.24.1
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.64 255.255.255.240 192.168.24.14
+do write
+end
+exit
+
+
+!R02
+
+ena
+config t
+interface Serial9/0 
+ip address 192.168.24.6 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial8/0 
+ip address 192.168.24.10 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial7/0 
+ip address 192.168.24.25 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+interface Serial6/0 
+ip address 192.168.24.29 255.255.255.252
+no shutdown 
+end
+exit
+
+ena
+config t
+ip route 192.168.24.80 255.255.255.240 192.168.24.9
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.64 255.255.255.240 192.168.24.9
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.112 255.255.255.240 192.168.24.30
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.96 255.255.255.240 192.168.24.26
+do write
+end
+exit
+
+ena
+config t
+ip route 192.168.24.48 255.255.255.240 192.168.24.5
+do write
+end
+exit
+
+
