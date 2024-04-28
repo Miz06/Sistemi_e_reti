@@ -11,7 +11,7 @@ ena
 config t
 interface Serial9/0 
 ip address 192.168.24.21 255.255.255.252
-no shutdown 
+no shutdown
 end
 exit
 
