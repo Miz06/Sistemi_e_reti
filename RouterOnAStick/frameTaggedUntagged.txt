@@ -1,0 +1,11 @@
+HOST TO SWITCH:
+Il frame è UNTAGGED in quanto passa per il link in access quindi il VLAN TAG è assente.
+
+SWITCH TO ROUTER:
+Il frame è TAGGED in quanto passa per il link in TRUNK e all'interno del VLAN TAG e più nello specifico all'interno del TCI nel campo VID è presente il VLAN ID della vlan di partenza del pacchetto (0x000a).
+
+ROUTER TO SWITCH:
+Il frame è TAGGED in quanto passa per il link in TRUNK e all'interno del VLAN TAG e più nello specifico all'interno del TCI nel campo VID è presente il VLAN ID della vlan di destinazione del pacchetto (0x001e).
+
+SWITCH TO HOST:
+Il frame è UNTAGGED in quanto passa per il link in ACCESS quindi il VLAN TAG è assente.
