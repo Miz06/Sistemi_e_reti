@@ -1,0 +1,68 @@
+//SW LAYER 2
+
+int fastethernet 0/24
+switchport mode trunk
+
+int fastethernet 0/1
+switchport access vlan 10
+exit
+
+int fastethernet 0/2
+switchport access vlan 20
+exit
+
+int fastethernet 0/3
+switchport access vlan 30
+exit
+
+vtp mode client
+vtp domain name1
+vtp password cisco
+
+----------------------------
+//SW LAYER 3
+
+int gigabitethernet 1/0/1
+switchport mode trunk
+
+int gigabitethernet 1/0/2
+switchport mode trunk
+
+int gigabitethernet 1/0/3
+switchport mode trunk
+
+vlan 10
+name R&D
+exit
+
+int vlan 10
+ip address 192.168.10.254 255.255.255.0
+ip helper-address 192.168.1.1 
+exit
+
+vlan 20
+name PRODUCTION
+exit
+
+int vlan 20
+ip address 192.168.20.254 255.255.255.0
+ip helper-address 192.168.1.1 
+exit
+
+vlan 30
+name SALES
+exit
+
+int vlan 30
+ip address 192.168.30.254 255.255.255.0
+ip helper-address 192.168.1.1 
+exit
+
+int vlan 1
+ip address 192.168.1.254 255.255.255.0
+exit
+
+vtp mode server
+vtp domain name1
+vtp password cisco
+vtp version 2
