@@ -1,0 +1,96 @@
+//SWITCH MULTILAYER 
+
+vlan 10 
+name A
+exit
+ 
+vlan 20
+name M
+exit
+
+vlan 30
+name B
+exit
+
+vlan 40 
+name C
+exit
+
+vlan 50 
+name D
+exit
+
+int vlan 10
+ip address 172.16.0.1 255.255.255.248
+ip helper-address 192.168.0.1 
+no shutdown 
+exit
+ 
+int vlan 20
+ip address 172.16.0.9 255.255.255.248
+ip helper-address 192.168.0.1 
+no shutdown 
+exit
+ 
+int vlan 30
+ip address 172.16.0.17 255.255.255.248
+ip helper-address 192.168.0.1 
+no shutdown 
+exit
+ 
+int vlan 40
+ip address 172.16.0.25 255.255.255.248
+ip helper-address 192.168.0.1 
+no shutdown 
+exit
+ 
+int vlan 50
+ip address 172.16.0.33 255.255.255.248
+ip helper-address 192.168.0.1 
+no shutdown 
+exit
+
+interface fastEthernet 0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface gigabitEthernet 0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface gigabitEthernet 0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+int vlan 1
+ip address 192.168.0.254 255.255.255.0
+no shutdown
+exit
+
+//CONFIGURAZIONE VTP
+vtp domain azienda
+vtp mode server
+vtp password cisco
+vtp version 2
+
+//CONFIGURAZIONE SVI
+ip routing
+
+//PROTEZIONE CONSOLE
+ena
+conf t
+line console 0
+password cisco
+login
+exit
+
+//PROTEZIONE PASSAGGIO DA USER A EXCEC
+enable secret cisco
+
+
+
+
+
