@@ -1,4 +1,5 @@
 //SWITCH MULTILAYER 
+----------------------------------------
 
 vlan 10 
 name A
@@ -89,6 +90,40 @@ exit
 
 //PROTEZIONE PASSAGGIO DA USER A EXCEC
 enable secret cisco
+
+//DESCRIZIONE INTERFACCE
+int vlan 10
+description UpLink-A
+exit
+
+...
+
+//NO SWITCHPORT
+int gigabitEthernet 0/1
+no switchport //per poter trattare la porta come la porta di uno switch
+ip address 10.0.0.1 255.255.255.252
+no shutdown
+exit
+
+//ROTTE
+ip route 0.0.0.0 0.0.0.0 10.0.0.2
+
+//SSH
+int vlan 20
+ip default-gateway 172.16.0.15
+
+ip domain name dominio.com
+crypto key generate rsa
+2048
+
+username admin password cisco
+ip ssh version2
+line vty 0 15
+transport input ssh
+login local
+end
+
+
 
 
 
