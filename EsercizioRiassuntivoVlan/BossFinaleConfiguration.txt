@@ -1,0 +1,428 @@
+//---------------------------------------------------------------
+//ALL SW
+//---------------------------------------------------------------
+vtp mode client
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int fa0/1
+switchport access vlan 10
+exit
+
+int fa0/2
+switchport access vlan 10
+exit
+
+int fa0/3
+switchport access vlan 20
+exit
+
+int fa0/4
+switchport access vlan 20
+exit
+
+int fa0/5
+switchport access vlan 30
+exit
+
+int fa0/6
+switchport access vlan 30
+exit
+
+int fa0/7
+switchport access vlan 500
+exit
+
+int fa0/8
+switchport access vlan 500
+exit
+
+int gi 0/1
+switchport mode trunk
+exit
+
+//---------------------------------------------------------------
+//ALL ML-SW
+//---------------------------------------------------------------
+
+vlan 10
+name WiFi-Dati 
+exit
+
+vlan 20
+name MNG
+exit
+
+vlan 30
+name Aule
+exit
+
+vlan 500
+name VOIP
+exit
+
+vtp mode server 
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int gi 0/2
+switchport trunk encapsulation dot1q 
+switchport mode trunk
+
+//------------------------------------------
+//ML-SW-ITI
+//------------------------------------------
+
+vlan 60
+name LAB_ZA
+exit
+
+vlan 70
+name LAB_ZB
+exit
+
+vlan 80
+name LAB_INF
+exit
+
+vlan 90
+name UFFICI
+exit
+
+int vlan10
+ip address 10.0.0.1 255.255.255.0 
+exit
+
+int vlan20
+ip address 10.0.1.1 255.255.255.0 
+exit
+
+int vlan30
+ip address 10.0.2.1 255.255.255.0 
+exit
+
+int vlan500
+ip address 10.0.3.1 255.255.255.0 
+exit
+
+int vlan60
+ip address 10.0.4.1 255.255.255.0 
+exit
+
+int vlan70
+ip address 10.0.5.1 255.255.255.0 
+exit
+
+int vlan80
+ip address 10.0.6.1 255.255.255.0 
+exit
+
+int vlan90
+ip address 10.0.7.1 255.255.255.0 
+exit
+
+ip routing
+
+int fa0/1
+switchport mode trunk
+exit
+
+int fa0/2
+switchport mode trunk
+exit
+
+int fa0/3
+switchport mode trunk
+exit
+
+//------------------------------------------
+//SW-ITI
+//------------------------------------------
+
+int fa0/9
+switchport access vlan 60
+exit
+
+int fa0/10
+switchport access vlan 60
+exit
+
+int fa0/11
+switchport access vlan 70
+exit
+
+int fa0/12
+switchport access vlan 70
+exit
+
+int fa0/13
+switchport access vlan 80
+exit
+
+int fa0/14
+switchport access vlan 80
+exit
+
+int fa0/15
+switchport access vlan 90
+exit
+
+int fa0/16
+switchport access vlan 90
+exit
+
+//------------------------------------------
+//ML-SW-ITG
+//------------------------------------------
+
+vlan 60
+name CAPANNONI
+exit
+
+vlan 70
+name LABORATORI
+exit
+
+vlan 80
+name UFFICI
+exit
+
+int vlan10
+ip address 10.0.8.1 255.255.255.0 
+exit
+
+int vlan20
+ip address 10.0.9.1 255.255.255.0 
+exit
+
+int vlan30
+ip address 10.0.10.1 255.255.255.0 
+exit
+
+int vlan500
+ip address 10.0.11.1 255.255.255.0 
+exit
+
+int vlan60
+ip address 10.0.12.1 255.255.255.0 
+exit
+
+int vlan70
+ip address 10.0.13.1 255.255.255.0 
+exit
+
+int vlan80
+ip address 10.0.14.1 255.255.255.0 
+exit
+
+ip routing
+
+//------------------------------------------
+//SW-ITG
+//------------------------------------------
+
+int fa0/9
+switchport access vlan 60
+exit
+
+int fa0/10
+switchport access vlan 60
+exit
+
+int fa0/11
+switchport access vlan 70
+exit
+
+int fa0/12
+switchport access vlan 70
+exit
+
+int fa0/13
+switchport access vlan 80
+exit
+
+int fa0/14
+switchport access vlan 80
+exit
+
+//------------------------------------------
+//ML-SW-IPIA
+//------------------------------------------
+
+vlan 60
+name CAPANNONI
+exit
+
+vlan 70
+name LABORATORI
+exit
+
+vlan 80
+name UFFICI
+exit
+
+int vlan10
+ip address 10.0.15.1 255.255.255.0 
+exit
+
+int vlan20
+ip address 10.0.16.1 255.255.255.0 
+exit
+
+int vlan30
+ip address 10.0.17.1 255.255.255.0 
+exit
+
+int vlan500
+ip address 10.0.18.1 255.255.255.0 
+exit
+
+int vlan60
+ip address 10.0.19.1 255.255.255.0 
+exit
+
+int vlan70
+ip address 10.0.20.1 255.255.255.0 
+exit
+
+int vlan80
+ip address 10.0.21.1 255.255.255.0 
+exit
+
+ip routing
+
+//------------------------------------------
+//SW-IPIA
+//------------------------------------------
+
+int fa0/9
+switchport access vlan 60
+exit
+
+int fa0/10
+switchport access vlan 60
+exit
+
+int fa0/11
+switchport access vlan 70
+exit
+
+int fa0/12
+switchport access vlan 70
+exit
+
+int fa0/13
+switchport access vlan 80
+exit
+
+int fa0/14
+switchport access vlan 80
+exit
+
+//---------------------------------------------------------------
+//ML-SW-ITA
+//---------------------------------------------------------------
+
+vlan 60
+name Serra 
+exit
+
+vlan 70
+name Laboratori
+exit
+
+vlan 80
+name Uffici
+exit
+
+vlan 90
+name Didattica
+exit
+
+vlan 100
+name UfficiScuola
+exit
+
+int vlan10
+ip address 10.0.22.1 255.255.255.0 
+exit
+
+int vlan20
+ip address 10.0.23.1 255.255.255.0 
+exit
+
+int vlan30
+ip address 10.0.24.1 255.255.255.0 
+exit
+
+int vlan500
+ip address 10.0.25.1 255.255.255.0 
+exit
+
+int vlan60
+ip address 10.0.26.1 255.255.255.0 
+exit
+
+int vlan70
+ip address 10.0.27.1 255.255.255.0 
+exit
+
+int vlan80
+ip address 10.0.28.1 255.255.255.0 
+exit
+
+int vlan90
+ip address 10.0.29.1 255.255.255.0 
+exit
+
+int vlan100
+ip address 10.0.30.1 255.255.255.0 
+exit
+
+ip routing
+
+//---------------------------------------------------------------
+//SW-ITA
+//---------------------------------------------------------------
+
+int fa0/9
+switchport access vlan 60
+exit
+
+int fa0/10
+switchport access vlan 60
+exit
+
+int fa0/11
+switchport access vlan 70
+exit
+
+int fa0/12
+switchport access vlan 70
+exit
+
+int fa0/13
+switchport access vlan 80
+exit
+
+int fa0/14
+switchport access vlan 80
+exit
+
+int fa0/15
+switchport access vlan 90
+exit
+
+int fa0/16
+switchport access vlan 90
+exit
+
+int fa0/17
+switchport access vlan 100
+exit
+
+int fa0/18
+switchport access vlan 100
+exit
