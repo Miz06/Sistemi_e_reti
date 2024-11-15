@@ -38,7 +38,7 @@ int fa0/8
 switchport access vlan 500
 exit
 
-int gi 0/1
+int gi0/1
 switchport mode trunk
 exit
 
@@ -70,10 +70,36 @@ vtp version 2
 int gi 0/2
 switchport trunk encapsulation dot1q 
 switchport mode trunk
+exit
 
 //------------------------------------------
 //ML-SW-ITI
 //------------------------------------------
+vlan 10
+name WiFi-Dati 
+exit
+
+vlan 20
+name MNG
+exit
+
+vlan 30
+name Aule
+exit
+
+vlan 500
+name VOIP
+exit
+
+vtp mode server 
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int gi 0/2
+switchport trunk encapsulation dot1q 
+switchport mode trunk
+exit
 
 vlan 60
 name LAB_ZA
@@ -93,6 +119,7 @@ exit
 
 int vlan10
 ip address 10.0.0.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan20
@@ -101,45 +128,265 @@ exit
 
 int vlan30
 ip address 10.0.2.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan500
 ip address 10.0.3.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan60
 ip address 10.0.4.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan70
 ip address 10.0.5.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan80
 ip address 10.0.6.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan90
 ip address 10.0.7.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 ip routing
 
 int fa0/1
+switchport trunk encapsulation dot1q 
 switchport mode trunk
 exit
 
 int fa0/2
+switchport trunk encapsulation dot1q 
 switchport mode trunk
 exit
 
 int fa0/3
+switchport trunk encapsulation dot1q 
 switchport mode trunk
+exit
+
+int gi 0/1
+no switchport 
+ip address 11.0.0.1 255.255.255.252
+no shutdown
+exit
+
+ip route 0.0.0.0 0.0.0.0 11.0.0.2 
+do write
+
+ip dhcp pool ITI-VLAN10-Pool
+network 10.0.0.0 255.255.255.0
+default-router 10.0.0.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITI-VLAN30-Pool
+network 10.0.2.0 255.255.255.0
+default-router 10.0.2.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITI-VLAN500-Pool
+network 10.0.3.0 255.255.255.0
+default-router 10.0.3.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITI-VLAN60-Pool
+network 10.0.4.0 255.255.255.0
+default-router 10.0.4.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITI-VLAN70-Pool
+network 10.0.5.0 255.255.255.0
+default-router 10.0.5.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITI-VLAN80-Pool
+network 10.0.6.0 255.255.255.0
+default-router 10.0.6.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITI-VLAN90-Pool
+network 10.0.7.0 255.255.255.0
+default-router 10.0.7.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITG-VLAN10-Pool
+network 10.0.8.0 255.255.255.0
+default-router 10.0.8.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITG-VLAN30-Pool
+network 10.0.10.0 255.255.255.0
+default-router 10.0.10.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITG-VLAN500-Pool
+network 10.0.11.0 255.255.255.0
+default-router 10.0.11.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITG-VLAN60-Pool
+network 10.0.12.0 255.255.255.0
+default-router 10.0.12.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITG-VLAN70-Pool
+network 10.0.13.0 255.255.255.0
+default-router 10.0.13.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITG-VLAN80-Pool
+network 10.0.14.0 255.255.255.0
+default-router 10.0.14.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool IPIA-VLAN10-Pool
+network 10.0.15.0 255.255.255.0
+default-router 10.0.15.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool IPIA-VLAN30-Pool
+network 10.0.17.0 255.255.255.0
+default-router 10.0.17.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool IPIA-VLAN500-Pool
+network 10.0.18.0 255.255.255.0
+default-router 10.0.18.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool IPIA-VLAN60-Pool
+network 10.0.19.0 255.255.255.0
+default-router 10.0.19.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool IPIA-VLAN70-Pool
+network 10.0.20.0 255.255.255.0
+default-router 10.0.20.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool IPIA-VLAN80-Pool
+network 10.0.21.0 255.255.255.0
+default-router 10.0.21.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN10-Pool
+network 10.0.22.0 255.255.255.0
+default-router 10.0.22.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN30-Pool
+network 10.0.24.0 255.255.255.0
+default-router 10.0.24.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN500-Pool
+network 10.0.25.0 255.255.255.0
+default-router 10.0.25.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN60-Pool
+network 10.0.26.0 255.255.255.0
+default-router 10.0.26.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN70-Pool
+network 10.0.27.0 255.255.255.0
+default-router 10.0.27.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN80-Pool
+network 10.0.28.0 255.255.255.0
+default-router 10.0.28.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN90-Pool
+network 10.0.29.0 255.255.255.128
+default-router 10.0.29.1
+dns-server 8.8.8.4
+exit
+
+ip dhcp pool ITA-VLAN100-Pool
+network 10.0.29.128 255.255.255.128
+default-router 10.0.29.129
+dns-server 8.8.8.4
 exit
 
 //------------------------------------------
 //SW-ITI
 //------------------------------------------
+vtp mode client
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int fa0/1
+switchport access vlan 10
+exit
+
+int fa0/2
+switchport access vlan 10
+exit
+
+int fa0/3
+switchport access vlan 20
+exit
+
+int fa0/4
+switchport access vlan 20
+exit
+
+int fa0/5
+switchport access vlan 30
+exit
+
+int fa0/6
+switchport access vlan 30
+exit
+
+int fa0/7
+switchport access vlan 500
+exit
+
+int fa0/8
+switchport access vlan 500
+exit
+
+int gi0/1
+switchport mode trunk
+exit
 
 int fa0/9
 switchport access vlan 60
@@ -177,6 +424,32 @@ exit
 //ML-SW-ITG
 //------------------------------------------
 
+vlan 10
+name WiFi-Dati 
+exit
+
+vlan 20
+name MNG
+exit
+
+vlan 30
+name Aule
+exit
+
+vlan 500
+name VOIP
+exit
+
+vtp mode server 
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int gi 0/2
+switchport trunk encapsulation dot1q 
+switchport mode trunk
+exit
+
 vlan 60
 name CAPANNONI
 exit
@@ -191,37 +464,92 @@ exit
 
 int vlan10
 ip address 10.0.8.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan20
-ip address 10.0.9.1 255.255.255.0 
+ip address 10.0.9.1 255.255.255.0
 exit
 
 int vlan30
 ip address 10.0.10.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan500
 ip address 10.0.11.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan60
 ip address 10.0.12.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan70
 ip address 10.0.13.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan80
 ip address 10.0.14.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 ip routing
 
+int gi0/1
+no switchport 
+ip address 11.0.0.5 255.255.255.252
+no shutdown
+exit
+
+ip route 0.0.0.0 0.0.0.0 11.0.0.6
+do write
+
 //------------------------------------------
 //SW-ITG
 //------------------------------------------
+vtp mode client
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int fa0/1
+switchport access vlan 10
+exit
+
+int fa0/2
+switchport access vlan 10
+exit
+
+int fa0/3
+switchport access vlan 20
+exit
+
+int fa0/4
+switchport access vlan 20
+exit
+
+int fa0/5
+switchport access vlan 30
+exit
+
+int fa0/6
+switchport access vlan 30
+exit
+
+int fa0/7
+switchport access vlan 500
+exit
+
+int fa0/8
+switchport access vlan 500
+exit
+
+int gi0/1
+switchport mode trunk
+exit
 
 int fa0/9
 switchport access vlan 60
@@ -251,6 +579,32 @@ exit
 //ML-SW-IPIA
 //------------------------------------------
 
+vlan 10
+name WiFi-Dati 
+exit
+
+vlan 20
+name MNG
+exit
+
+vlan 30
+name Aule
+exit
+
+vlan 500
+name VOIP
+exit
+
+vtp mode server 
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int gi 0/2
+switchport trunk encapsulation dot1q 
+switchport mode trunk
+exit
+
 vlan 60
 name CAPANNONI
 exit
@@ -265,6 +619,7 @@ exit
 
 int vlan10
 ip address 10.0.15.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan20
@@ -273,29 +628,84 @@ exit
 
 int vlan30
 ip address 10.0.17.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan500
 ip address 10.0.18.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan60
 ip address 10.0.19.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan70
 ip address 10.0.20.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan80
 ip address 10.0.21.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 ip routing
 
+int gi0/1
+no switchport 
+ip address 11.0.0.9 255.255.255.252
+no shutdown
+exit
+
+ip route 0.0.0.0 0.0.0.0 11.0.0.10
+do write
+
 //------------------------------------------
 //SW-IPIA
 //------------------------------------------
+
+vtp mode client
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int fa0/1
+switchport access vlan 10
+exit
+
+int fa0/2
+switchport access vlan 10
+exit
+
+int fa0/3
+switchport access vlan 20
+exit
+
+int fa0/4
+switchport access vlan 20
+exit
+
+int fa0/5
+switchport access vlan 30
+exit
+
+int fa0/6
+switchport access vlan 30
+exit
+
+int fa0/7
+switchport access vlan 500
+exit
+
+int fa0/8
+switchport access vlan 500
+exit
+
+int gi0/1
+switchport mode trunk
+exit
 
 int fa0/9
 switchport access vlan 60
@@ -325,6 +735,32 @@ exit
 //ML-SW-ITA
 //---------------------------------------------------------------
 
+vlan 10
+name WiFi-Dati 
+exit
+
+vlan 20
+name MNG
+exit
+
+vlan 30
+name Aule
+exit
+
+vlan 500
+name VOIP
+exit
+
+vtp mode server 
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int gi 0/2
+switchport trunk encapsulation dot1q 
+switchport mode trunk
+exit
+
 vlan 60
 name Serra 
 exit
@@ -347,6 +783,7 @@ exit
 
 int vlan10
 ip address 10.0.22.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan20
@@ -355,37 +792,94 @@ exit
 
 int vlan30
 ip address 10.0.24.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan500
 ip address 10.0.25.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan60
 ip address 10.0.26.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan70
 ip address 10.0.27.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan80
 ip address 10.0.28.1 255.255.255.0 
+ip helper-address 11.0.0.1
 exit
 
 int vlan90
-ip address 10.0.29.1 255.255.255.0 
+ip address 10.0.29.1 255.255.255.128 
+ip helper-address 11.0.0.1
 exit
 
 int vlan100
-ip address 10.0.30.1 255.255.255.0 
+ip address 10.0.29.129 255.255.255.128
+ip helper-address 11.0.0.1
 exit
 
 ip routing
 
+int gi0/1
+no switchport 
+ip address 11.0.0.13 255.255.255.252
+no shutdown
+exit
+
+ip route 0.0.0.0 0.0.0.0 11.0.0.14
+do write
+
 //---------------------------------------------------------------
 //SW-ITA
 //---------------------------------------------------------------
+
+vtp mode client
+vtp domain scuola
+vtp password cisco
+vtp version 2
+
+int fa0/1
+switchport access vlan 10
+exit
+
+int fa0/2
+switchport access vlan 10
+exit
+
+int fa0/3
+switchport access vlan 20
+exit
+
+int fa0/4
+switchport access vlan 20
+exit
+
+int fa0/5
+switchport access vlan 30
+exit
+
+int fa0/6
+switchport access vlan 30
+exit
+
+int fa0/7
+switchport access vlan 500
+exit
+
+int fa0/8
+switchport access vlan 500
+exit
+
+int gi0/1
+switchport mode trunk
+exit
 
 int fa0/9
 switchport access vlan 60
@@ -426,3 +920,126 @@ exit
 int fa0/18
 switchport access vlan 100
 exit
+
+//---------------------------------------------------------------
+//RT-ITI
+//---------------------------------------------------------------
+
+int gi5/0
+ip address 11.0.0.2 255.255.255.252
+no shutdown
+exit
+
+int se4/0
+ip address 12.0.0.2 255.255.255.252
+no shutdown
+exit
+
+int se3/0
+ip address 12.0.0.6 255.255.255.252
+no shutdown
+exit
+
+int se2/0
+ip address 12.0.0.10 255.255.255.252
+no shutdown
+exit
+
+ip route 10.0.0.0 255.255.248.0 11.0.0.1
+do write
+
+ip route 10.0.8.0 255.255.248.0 12.0.0.1
+do write
+
+ip route 10.0.15.0 255.255.248.0 12.0.0.5
+do write
+
+ip route 10.0.22.0 255.255.248.0 12.0.0.9
+do write
+
+//---------------------------------------------------------------
+//RT-ITG
+//---------------------------------------------------------------
+
+int gi5/0
+ip address 11.0.0.6 255.255.255.252
+no shutdown
+exit
+
+int se4/0
+ip address 12.0.0.1 255.255.255.252
+no shutdown
+exit
+
+ip route 10.0.0.0 255.255.248.0 12.0.0.2
+do write
+
+ip route 10.0.8.0 255.255.248.0 11.0.0.5
+do write
+
+ip route 10.0.15.0 255.255.248.0 12.0.0.2
+do write
+
+ip route 10.0.22.0 255.255.248.0 12.0.0.2
+do write
+
+ip route 11.0.0.0 255.255.255.252 12.0.0.2
+do write
+
+//---------------------------------------------------------------
+//RT-IPIA
+//---------------------------------------------------------------
+
+int gi4/0
+ip address 11.0.0.10 255.255.255.252
+no shutdown
+exit
+
+int se3/0
+ip address 12.0.0.5 255.255.255.252
+no shutdown
+exit
+
+ip route 10.0.0.0 255.255.248.0 12.0.0.6
+do write
+
+ip route 10.0.8.0 255.255.248.0 12.0.0.6
+do write
+
+ip route 10.0.15.0 255.255.248.0 11.0.0.9
+do write
+
+ip route 10.0.22.0 255.255.248.0 12.0.0.6
+do write
+
+ip route 11.0.0.0 255.255.255.252 12.0.0.6
+do write
+
+//---------------------------------------------------------------
+//RT-ITA
+//---------------------------------------------------------------
+
+int gi4/0
+ip address 11.0.0.14 255.255.255.252
+no shutdown
+exit
+
+int se2/0
+ip address 12.0.0.9 255.255.255.252
+no shutdown
+exit
+
+ip route 10.0.0.0 255.255.248.0 12.0.0.10
+do write
+
+ip route 10.0.8.0 255.255.248.0 12.0.0.10
+do write
+
+ip route 10.0.15.0 255.255.248.0 12.0.0.10
+do write
+
+ip route 10.0.22.0 255.255.248.0 11.0.0.13
+do write
+
+ip route 11.0.0.0 255.255.255.252 12.0.0.10
+do write
