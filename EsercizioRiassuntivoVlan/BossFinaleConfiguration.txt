@@ -5,6 +5,24 @@
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname ML-SW-ITI
+ip domain name ITI
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
+
 vlan 10
 name WiFi-Dati 
 exit
@@ -311,6 +329,13 @@ exit
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
 vtp mode client
 vtp domain ITI
 vtp password cisco
@@ -393,6 +418,24 @@ exit
 
 ena
 conf t
+
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname ML-SW-ITG
+ip domain name ITG
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
 
 vlan 10
 name WiFi-Dati 
@@ -487,6 +530,13 @@ exit
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
 vtp mode client
 vtp domain ITG
 vtp password cisco
@@ -561,6 +611,24 @@ exit
 
 ena
 conf t
+
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname ML-SW-IPIA
+ip domain name IPIA
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
 
 vlan 10
 name WiFi-Dati 
@@ -655,6 +723,13 @@ exit
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
 vtp mode client
 vtp domain IPIA
 vtp password cisco
@@ -729,6 +804,24 @@ exit
 
 ena
 conf t
+
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname ML-SW-ITA
+ip domain name ITA
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
 
 vlan 10
 name WiFi-Dati 
@@ -838,8 +931,15 @@ exit
 //SW-ITA
 //---------------------------------------------------------------
 
-ena 
+ena
 conf t
+
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
 
 vtp mode client
 vtp domain ITA
@@ -932,6 +1032,24 @@ exit
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname RT-ITI
+ip domain name RT-ITI
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
+
 int gi5/0
 ip address 11.0.0.2 255.255.255.252
 no shutdown
@@ -986,6 +1104,24 @@ exit
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname RT-ITG
+ip domain name RT-ITG
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
+
 int gi5/0
 ip address 11.0.0.6 255.255.255.252
 no shutdown
@@ -1033,6 +1169,24 @@ exit
 ena
 conf t
 
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname RT-IPIA
+ip domain name RT-IPIA
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
+
 int gi4/0
 ip address 11.0.0.10 255.255.255.252
 no shutdown
@@ -1079,6 +1233,24 @@ exit
 
 ena
 conf t
+
+line console 0
+password cisco
+login 
+exit
+
+enable secret cisco
+
+hostname RT-ITA
+ip domain name RT-ITA
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0 15
+transport input ssh
+login local
+exit
 
 int gi4/0
 ip address 11.0.0.14 255.255.255.252
