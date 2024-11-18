@@ -329,6 +329,8 @@ exit
 ena
 conf t
 
+hostname SW-ITI
+
 line console 0
 password cisco
 login 
@@ -530,6 +532,8 @@ exit
 ena
 conf t
 
+hostname SW-ITG
+
 line console 0
 password cisco
 login 
@@ -620,6 +624,7 @@ exit
 enable secret cisco
 
 hostname ML-SW-IPIA
+
 ip domain name IPIA
 crypto key generate rsa
 2048
@@ -723,6 +728,8 @@ exit
 ena
 conf t
 
+hostname SW-IPIA
+
 line console 0
 password cisco
 login 
@@ -813,6 +820,7 @@ exit
 enable secret cisco
 
 hostname ML-SW-ITA
+
 ip domain name ITA
 crypto key generate rsa
 2048
@@ -933,6 +941,8 @@ exit
 
 ena
 conf t
+
+hostname SW-ITA
 
 line console 0
 password cisco
