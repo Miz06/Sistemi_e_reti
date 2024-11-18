@@ -1,6 +1,10 @@
 //------------------------------------------
 //ML-SW-ITI
 //------------------------------------------
+
+ena
+conf t
+
 vlan 10
 name WiFi-Dati 
 exit
@@ -18,7 +22,7 @@ name VOIP
 exit
 
 vtp mode server 
-vtp domain scuola
+vtp domain ITI
 vtp password cisco
 vtp version 2
 
@@ -108,173 +112,207 @@ exit
 ip route 0.0.0.0 0.0.0.0 11.0.0.2 
 do write
 
+ip dhcp excluded-address 10.0.0.1
 ip dhcp pool ITI-VLAN10-Pool
-network 10.0.0.0 255.255.255.0
-default-router 10.0.0.1
-dns-server 8.8.8.4
-exit
+ network 10.0.0.0 255.255.255.0
+ default-router 10.0.0.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.2.1
 ip dhcp pool ITI-VLAN30-Pool
-network 10.0.2.0 255.255.255.0
-default-router 10.0.2.1
-dns-server 8.8.8.4
-exit
+ network 10.0.2.0 255.255.255.0
+ default-router 10.0.2.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.3.1
 ip dhcp pool ITI-VLAN500-Pool
-network 10.0.3.0 255.255.255.0
-default-router 10.0.3.1
-dns-server 8.8.8.4
-exit
+ network 10.0.3.0 255.255.255.0
+ default-router 10.0.3.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.4.1
 ip dhcp pool ITI-VLAN60-Pool
-network 10.0.4.0 255.255.255.0
-default-router 10.0.4.1
-dns-server 8.8.8.4
-exit
+ network 10.0.4.0 255.255.255.0
+ default-router 10.0.4.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.5.1
 ip dhcp pool ITI-VLAN70-Pool
-network 10.0.5.0 255.255.255.0
-default-router 10.0.5.1
-dns-server 8.8.8.4
-exit
+ network 10.0.5.0 255.255.255.0
+ default-router 10.0.5.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.6.1
 ip dhcp pool ITI-VLAN80-Pool
-network 10.0.6.0 255.255.255.0
-default-router 10.0.6.1
-dns-server 8.8.8.4
-exit
+ network 10.0.6.0 255.255.255.0
+ default-router 10.0.6.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.7.1
 ip dhcp pool ITI-VLAN90-Pool
-network 10.0.7.0 255.255.255.0
-default-router 10.0.7.1
-dns-server 8.8.8.4
-exit
+ network 10.0.7.0 255.255.255.0
+ default-router 10.0.7.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.8.1
 ip dhcp pool ITG-VLAN10-Pool
-network 10.0.8.0 255.255.255.0
-default-router 10.0.8.1
-dns-server 8.8.8.4
-exit
+ network 10.0.8.0 255.255.255.0
+ default-router 10.0.8.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.10.1
 ip dhcp pool ITG-VLAN30-Pool
-network 10.0.10.0 255.255.255.0
-default-router 10.0.10.1
-dns-server 8.8.8.4
-exit
+ network 10.0.10.0 255.255.255.0
+ default-router 10.0.10.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.11.1
 ip dhcp pool ITG-VLAN500-Pool
-network 10.0.11.0 255.255.255.0
-default-router 10.0.11.1
-dns-server 8.8.8.4
-exit
+ network 10.0.11.0 255.255.255.0
+ default-router 10.0.11.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.12.1
 ip dhcp pool ITG-VLAN60-Pool
-network 10.0.12.0 255.255.255.0
-default-router 10.0.12.1
-dns-server 8.8.8.4
-exit
+ network 10.0.12.0 255.255.255.0
+ default-router 10.0.12.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.13.1
 ip dhcp pool ITG-VLAN70-Pool
-network 10.0.13.0 255.255.255.0
-default-router 10.0.13.1
-dns-server 8.8.8.4
-exit
+ network 10.0.13.0 255.255.255.0
+ default-router 10.0.13.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.14.1
 ip dhcp pool ITG-VLAN80-Pool
-network 10.0.14.0 255.255.255.0
-default-router 10.0.14.1
-dns-server 8.8.8.4
-exit
+ network 10.0.14.0 255.255.255.0
+ default-router 10.0.14.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.15.1
 ip dhcp pool IPIA-VLAN10-Pool
-network 10.0.15.0 255.255.255.0
-default-router 10.0.15.1
-dns-server 8.8.8.4
-exit
+ network 10.0.15.0 255.255.255.0
+ default-router 10.0.15.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.17.1
 ip dhcp pool IPIA-VLAN30-Pool
-network 10.0.17.0 255.255.255.0
-default-router 10.0.17.1
-dns-server 8.8.8.4
-exit
+ network 10.0.17.0 255.255.255.0
+ default-router 10.0.17.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.18.1
 ip dhcp pool IPIA-VLAN500-Pool
-network 10.0.18.0 255.255.255.0
-default-router 10.0.18.1
-dns-server 8.8.8.4
-exit
+ network 10.0.18.0 255.255.255.0
+ default-router 10.0.18.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.19.1
 ip dhcp pool IPIA-VLAN60-Pool
-network 10.0.19.0 255.255.255.0
-default-router 10.0.19.1
-dns-server 8.8.8.4
-exit
+ network 10.0.19.0 255.255.255.0
+ default-router 10.0.19.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.20.1
 ip dhcp pool IPIA-VLAN70-Pool
-network 10.0.20.0 255.255.255.0
-default-router 10.0.20.1
-dns-server 8.8.8.4
-exit
+ network 10.0.20.0 255.255.255.0
+ default-router 10.0.20.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.21.1
 ip dhcp pool IPIA-VLAN80-Pool
-network 10.0.21.0 255.255.255.0
-default-router 10.0.21.1
-dns-server 8.8.8.4
-exit
+ network 10.0.21.0 255.255.255.0
+ default-router 10.0.21.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.22.1
 ip dhcp pool ITA-VLAN10-Pool
-network 10.0.22.0 255.255.255.0
-default-router 10.0.22.1
-dns-server 8.8.8.4
-exit
+ network 10.0.22.0 255.255.255.0
+ default-router 10.0.22.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.24.1
 ip dhcp pool ITA-VLAN30-Pool
-network 10.0.24.0 255.255.255.0
-default-router 10.0.24.1
-dns-server 8.8.8.4
-exit
+ network 10.0.24.0 255.255.255.0
+ default-router 10.0.24.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.25.1
 ip dhcp pool ITA-VLAN500-Pool
-network 10.0.25.0 255.255.255.0
-default-router 10.0.25.1
-dns-server 8.8.8.4
-exit
+ network 10.0.25.0 255.255.255.0
+ default-router 10.0.25.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.26.1
 ip dhcp pool ITA-VLAN60-Pool
-network 10.0.26.0 255.255.255.0
-default-router 10.0.26.1
-dns-server 8.8.8.4
-exit
+ network 10.0.26.0 255.255.255.0
+ default-router 10.0.26.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.27.1
 ip dhcp pool ITA-VLAN70-Pool
-network 10.0.27.0 255.255.255.0
-default-router 10.0.27.1
-dns-server 8.8.8.4
-exit
+ network 10.0.27.0 255.255.255.0
+ default-router 10.0.27.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.28.1
 ip dhcp pool ITA-VLAN80-Pool
-network 10.0.28.0 255.255.255.0
-default-router 10.0.28.1
-dns-server 8.8.8.4
-exit
+ network 10.0.28.0 255.255.255.0
+ default-router 10.0.28.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.29.1
 ip dhcp pool ITA-VLAN90-Pool
-network 10.0.29.0 255.255.255.128
-default-router 10.0.29.1
-dns-server 8.8.8.4
-exit
+ network 10.0.29.0 255.255.255.128
+ default-router 10.0.29.1
+ dns-server 8.8.8.4
+ exit
 
+ip dhcp excluded-address 10.0.29.129
 ip dhcp pool ITA-VLAN100-Pool
-network 10.0.29.128 255.255.255.128
-default-router 10.0.29.129
-dns-server 8.8.8.4
+ network 10.0.29.128 255.255.255.128
+ default-router 10.0.29.129
+ dns-server 8.8.8.4
+ exit
+
+end
 exit
 
 //------------------------------------------
 //SW-ITI
 //------------------------------------------
+
+ena
+conf t
+
 vtp mode client
-vtp domain scuola
+vtp domain ITI
 vtp password cisco
 vtp version 2
 
@@ -346,9 +384,15 @@ int fa0/16
 switchport access vlan 90
 exit
 
+end
+exit
+
 //------------------------------------------
 //ML-SW-ITG
 //------------------------------------------
+
+ena
+conf t
 
 vlan 10
 name WiFi-Dati 
@@ -367,7 +411,7 @@ name VOIP
 exit
 
 vtp mode server 
-vtp domain scuola
+vtp domain ITG
 vtp password cisco
 vtp version 2
 
@@ -433,11 +477,18 @@ exit
 ip route 0.0.0.0 0.0.0.0 11.0.0.6
 do write
 
+end
+exit
+
 //------------------------------------------
 //SW-ITG
 //------------------------------------------
+
+ena
+conf t
+
 vtp mode client
-vtp domain scuola
+vtp domain ITG
 vtp password cisco
 vtp version 2
 
@@ -501,9 +552,15 @@ int fa0/14
 switchport access vlan 80
 exit
 
+end
+exit
+
 //------------------------------------------
 //ML-SW-IPIA
 //------------------------------------------
+
+ena
+conf t
 
 vlan 10
 name WiFi-Dati 
@@ -522,7 +579,7 @@ name VOIP
 exit
 
 vtp mode server 
-vtp domain scuola
+vtp domain IPIA
 vtp password cisco
 vtp version 2
 
@@ -588,12 +645,18 @@ exit
 ip route 0.0.0.0 0.0.0.0 11.0.0.10
 do write
 
+end
+exit
+
 //------------------------------------------
 //SW-IPIA
 //------------------------------------------
 
+ena
+conf t
+
 vtp mode client
-vtp domain scuola
+vtp domain IPIA
 vtp password cisco
 vtp version 2
 
@@ -657,9 +720,15 @@ int fa0/14
 switchport access vlan 80
 exit
 
+end
+exit
+
 //---------------------------------------------------------------
 //ML-SW-ITA
 //---------------------------------------------------------------
+
+ena
+conf t
 
 vlan 10
 name WiFi-Dati 
@@ -678,7 +747,7 @@ name VOIP
 exit
 
 vtp mode server 
-vtp domain scuola
+vtp domain ITA
 vtp password cisco
 vtp version 2
 
@@ -762,12 +831,18 @@ exit
 ip route 0.0.0.0 0.0.0.0 11.0.0.14
 do write
 
+end
+exit
+
 //---------------------------------------------------------------
 //SW-ITA
 //---------------------------------------------------------------
 
+ena 
+conf t
+
 vtp mode client
-vtp domain scuola
+vtp domain ITA
 vtp password cisco
 vtp version 2
 
@@ -847,9 +922,15 @@ int fa0/18
 switchport access vlan 100
 exit
 
+end
+exit
+
 //---------------------------------------------------------------
 //RT-ITI
 //---------------------------------------------------------------
+
+ena
+conf t
 
 int gi5/0
 ip address 11.0.0.2 255.255.255.252
@@ -892,9 +973,18 @@ do write
 ip route 10.0.24.0 255.255.248.0 12.0.0.9
 do write
 
+ip route 8.8.8.0 255.255.255.248 11.0.0.1
+do write
+
+end
+exit
+
 //---------------------------------------------------------------
 //RT-ITG
 //---------------------------------------------------------------
+
+ena
+conf t
 
 int gi5/0
 ip address 11.0.0.6 255.255.255.252
@@ -930,9 +1020,18 @@ do write
 ip route 11.0.0.0 255.255.255.252 12.0.0.2
 do write
 
+ip route 8.8.8.0 255.255.255.248 12.0.0.2
+do write
+
+end
+exit
+
 //---------------------------------------------------------------
 //RT-IPIA
 //---------------------------------------------------------------
+
+ena
+conf t
 
 int gi4/0
 ip address 11.0.0.10 255.255.255.252
@@ -968,9 +1067,18 @@ do write
 ip route 11.0.0.0 255.255.255.252 12.0.0.6
 do write
 
+ip route 8.8.8.0 255.255.255.248 12.0.0.6
+do write
+
+end
+exit
+
 //---------------------------------------------------------------
 //RT-ITA
 //---------------------------------------------------------------
+
+ena
+conf t
 
 int gi4/0
 ip address 11.0.0.14 255.255.255.252
@@ -1005,3 +1113,9 @@ do write
 
 ip route 11.0.0.0 255.255.255.252 11.0.0.10
 do write
+
+ip route 8.8.8.0 255.255.255.248 12.0.0.10
+do write
+
+end
+exit
