@@ -1,0 +1,217 @@
+!RT1
+ena
+conf t
+
+hostname RT1
+
+int se9/0
+ip address 10.10.12.1 255.255.255.252
+no shutdown
+exit
+
+int se8/0
+ip address 10.10.13.1 255.255.255.252
+no shutdown
+exit
+
+int fa6/0
+ip address 192.168.1.130 255.255.255.192
+no shutdown
+exit
+
+int fa7/0
+ip address 192.168.1.1 255.255.255.192
+no shutdown
+exit
+
+ip domain name domain1
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0  15
+transport input ssh
+login local
+exit
+
+ip route 192.168.30.0 255.255.255.0 10.10.13.2
+do write
+
+ip route 192.168.3.0 255.255.255.252 10.10.13.2
+do write
+
+ip route 172.16.2.128 255.255.255.128 10.10.12.2
+do write
+
+ip route 172.16.2.0 255.255.255.224 10.10.12.2
+do write
+
+end
+
+!RT2
+ena
+conf t
+
+hostname RT2
+
+int se7/0
+ip address 10.10.23.1 255.255.255.252
+no shutdown
+exit
+
+int se8/0
+ip address 10.10.12.2 255.255.255.252
+no shutdown
+exit
+
+int fa9/0
+ip address 172.16.2.1 255.255.255.224	
+no shutdown
+exit
+
+int fa6/0
+ip address 172.16.2.129 255.255.255.128
+no shutdown
+exit
+
+ip domain name domain2
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0  15
+transport input ssh
+login local
+exit
+end
+
+ip route 192.168.1.0 255.255.255.192 10.10.12.1 
+do write
+
+ip route 192.168.1.128 255.255.255.192 10.10.12.1 
+do write
+
+ip route 172.16.3.0 255.255.255.252 10.10.23.2 
+do write
+
+ip route 192.168.30.0 255.255.255.0 10.10.23.2 
+do write
+
+ip route 192.168.3.0 255.255.255.0 10.10.23.2 
+do write
+
+!RT3
+ena
+conf t
+
+hostname RT3
+
+int se8/0
+ip address 10.10.13.2 255.255.255.252
+no shutdown
+exit
+
+int se7/0
+ip address 10.10.23.2 255.255.255.252
+no shutdown
+exit
+
+int fa6/0
+ip address 192.168.30.1 255.255.255.0
+no shutdown
+exit
+
+int fa9/0
+ip address 192.168.3.1 255.255.255.252
+no shutdown
+exit
+
+ip domain name domain3
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0  15
+transport input ssh
+login local
+exit
+
+ip route 172.16.2.128 255.255.255.128 10.10.23.1
+do write
+
+ip route 172.16.2.0 255.255.255.224 10.10.23.1
+do write
+
+ip route 192.168.1.0 255.255.255.192 10.10.13.1
+do write
+
+end
+
+!SW-0
+ena
+conf t
+
+hostname SW-0
+
+int vlan 1
+ip address 192.168.1.10 255.255.255.192	
+no shutdown
+exit
+
+ip domain name domainSW0
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0  15
+transport input ssh
+login local
+exit
+
+end
+
+!SW-1
+ena
+conf t
+
+hostname SW-1
+
+int vlan 1
+ip address 172.16.2.140 255.255.255.128	
+no shutdown
+exit
+
+ip domain name domainSW1
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0  15
+transport input ssh
+login local
+exit
+
+end
+
+!SW-2
+ena
+conf t
+
+hostname SW-2
+
+int vlan 1
+ip address 192.168.30.10 255.255.255.0	
+no shutdown
+exit
+
+ip domain name domainSW2
+crypto key generate rsa
+2048
+username admin password cisco
+ip ssh version 2
+line vty 0  15
+transport input ssh
+login local
+exit
+
+end
