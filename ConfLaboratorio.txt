@@ -1,0 +1,81 @@
+--- SW-CLIENT
+ena
+conf t
+hostname SW-VTP_CLIENT
+
+vtp mode client
+vtp domain itis
+vtp password cisco
+
+interface fastEthernet 0/1
+switchport mode trunk
+exit
+
+--- SW-SERVER
+ena
+conf t
+hostname SW-VTP_SERVER
+
+vtp mode server
+vtp version 2
+vtp domain itis
+vtp password cisco
+
+interface fastEthernet 0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+
+vlan 10
+name A
+exit
+
+vlan 20
+name B
+exit
+
+vlan 30
+name C
+exit
+
+int vlan 10
+ip address 192.168.10.254 255.255.255.0
+no shutdown
+exit
+
+int vlan 20
+ip address 192.168.20.254 255.255.255.0
+no shutdown
+exit
+
+int vlan30
+ip address 192.168.30.254 255.255.255.0
+no shutdown
+exit
+
+ip routing
+
+--- ROUTER
+ena
+conf t
+
+interface fa1/0.10
+encapsulation dot1q 10
+ip address 192.168.10.254 255.255.255.0
+no shutdown
+exit
+
+interface fa1/0.20
+encapsulation dot1q 20
+ip address 192.168.20.254 255.255.255.0
+no shutdown
+exit
+
+interface fa1/0.30
+encapsulation dot1q 30
+ip address 192.168.30.254 255.255.255.0
+no shutdown
+exit
+
+interface fa1/0
+no shutdown
+exit
