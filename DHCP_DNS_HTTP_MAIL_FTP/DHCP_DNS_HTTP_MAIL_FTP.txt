@@ -1,0 +1,115 @@
+//---------------------------------
+// R1
+
+ena
+conf t
+
+hostname R1
+
+ip dhcp pool local_1
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.254
+exit
+
+int fa0/0 
+ip address 192.168.10.254 255.255.255.0
+no shutdown
+exit
+
+int se2/0
+ip address 1.0.0.1 255.0.0.0
+no shutdown
+exit
+
+ip route 200.0.0.0 255.255.0.0 1.0.0.2
+do write
+
+ip route 192.168.20.0 255.255.255.0 1.0.0.2
+do write
+
+//---------------------------------
+//R2
+
+ena
+conf t
+
+hostname R2
+
+ip dhcp pool local_1
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.254
+exit
+
+int fa0/0 
+ip address 192.168.20.254 255.255.255.0
+no shutdown
+exit
+
+int se2/0
+ip address 3.0.0.1 255.0.0.0
+no shutdown
+exit
+
+ip route 200.0.0.0 255.255.0.0 3.0.0.2
+do write
+
+ip route 192.168.10.0 255.255.255.0 3.0.0.2
+do write
+
+
+//---------------------------------
+//R3
+
+ena
+conf t
+
+hostname R3
+
+int se9/0
+ip address 1.0.0.2 255.0.0.0
+no shutdown
+exit
+
+int se3/0
+ip address 3.0.0.2 255.0.0.0
+no shutdown
+exit
+
+int se8/0
+ip address 2.0.0.2 255.0.0.0
+no shutdown
+exit
+
+ip route 200.0.0.0 255.255.0.0 2.0.0.1
+do write
+
+ip route 192.168.10.0 255.255.255.0 1.0.0.1
+do write
+
+ip route 192.168.20.0 255.255.255.0 3.0.0.1
+do write
+
+
+//---------------------------------
+//R4
+
+ena
+conf t
+
+hostname R4
+
+int se2/0
+ip address 2.0.0.1 255.0.0.0
+no shutdown
+exit
+
+int fa0/0
+ip address 200.0.255.254 255.255.0.0
+no shutdown
+exit
+
+ip route 192.168.10.0 255.255.255.0 2.0.0.2
+do write
+
+ip route 192.168.20.0 255.255.255.0 2.0.0.2
+do write
