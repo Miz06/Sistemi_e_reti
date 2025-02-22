@@ -1,9 +1,9 @@
-!SW-RM
+!SW-ML-RM
 
 ena
 conf t
 
-hostname SV-ML-RM
+hostname SW-ML-RM
 
 vtp mode server
 vtp domain ROMA
@@ -119,12 +119,20 @@ ip dhcp pool 8
 network 10.13.96.0 255.255.224.0
 default-router 10.13.127.254
 
-!SW-RO
+ip route 10.0.0.0 255.252.0.0 192.168.0.29
+ip route 10.4.0.0 255.252.0.0 192.168.0.29
+ip route 10.12.0.0 255.252.0.0 192.168.0.29
+ip route 10.14.0.0 255.254.0.0 192.168.0.29
+ip route 10.16.0.0 255.254.0.0 192.168.0.29
+ip route 10.18.0.0 255.254.0.0 192.168.0.29
+ip route 10.20.0.0 255.255.0.0 192.168.0.29
+
+!SW-RM
 
 ena
 conf t
 
-hostname SV-RO
+hostname SW-RM
 
 vtp mode client 
 vtp domain ROMA
@@ -172,3 +180,551 @@ no shutdown
 exit
 
 !-------------------------------------------------
+
+!SW-ML-BO
+
+ena
+conf t
+
+hostname SW-ML-BO
+
+vtp mode server
+vtp domain BOLOGNA
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+ip address 192.168.0.26 255.255.255.252
+no switchport
+no shutdown
+exit
+
+vlan 10
+name Imola
+
+vlan 20
+name Casalecchio_di_Reno 
+
+vlan 30
+name San_Lazzaro_di_Savena
+
+vlan 40
+name Valsamoggia
+
+vlan 50
+name San_Giovanni_in_Persiceto
+
+vlan 60
+name Castel_San_Pietro_Terme
+
+vlan 70
+name Zola_Predosa
+
+vlan 80
+name Budrio
+
+int vlan 10
+ip address 10.10.63.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.10.127.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.8.127.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.10.129.254 255.255.254.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.8.255.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.9.127.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.9.191.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.9.255.254 255.255.192.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.10.0.0 255.255.192.0
+default-router 10.10.63.254
+
+ip dhcp pool 2
+network 10.10.64.0 255.255.192.0
+default-router 10.10.127.254
+
+ip dhcp pool 3
+network 10.8.0.0 255.255.128.0
+default-router 10.8.127.254
+
+ip dhcp pool 4
+network 10.10.128.0 255.255.254.0
+default-router 10.10.129.254
+
+ip dhcp pool 5
+network 10.8.128.0 255.255.128.0
+default-router 10.8.255.254
+
+ip dhcp pool 6
+network 10.9.0.0 255.255.128.0
+default-router 10.9.127.254
+
+ip dhcp pool 7
+network 10.9.128.0 255.255.192.0
+default-router 10.9.191.254
+
+ip dhcp pool 8
+network 10.9.192.0 255.255.192.0
+default-router 10.9.255.254
+
+ip route 10.0.0.0 255.252.0.0 192.168.0.25
+ip route 10.4.0.0 255.252.0.0 192.168.0.25
+ip route 10.8.0.0 255.252.0.0 192.168.0.25
+ip route 10.14.0.0 255.254.0.0 192.168.0.25
+ip route 10.16.0.0 255.254.0.0 192.168.0.25
+ip route 10.18.0.0 255.254.0.0 192.168.0.25
+ip route 10.20.0.0 255.255.0.0 192.168.0.25
+
+!SW-BO
+
+ena
+conf t
+
+hostname SW-BO
+
+vtp mode client 
+vtp domain BOLOGNA
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
+!-------------------------------------------------
+
+!SW-ML-GE
+
+ena
+conf t
+
+hostname SW-ML-GE
+
+vtp mode server
+vtp domain GENOVA
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+ip address 192.168.0.22 255.255.255.252
+no switchport
+no shutdown
+exit
+
+vlan 10
+name Rapallo
+
+vlan 20
+name Chiavari 
+
+vlan 30
+name Sestri Levante
+
+vlan 40
+name Lavagna
+
+vlan 50
+name Arenzano
+
+vlan 60
+name Recco
+
+vlan 70
+name Santa Margherita Ligure
+
+vlan 80
+name Cogoleto
+
+int vlan 10
+ip address 
+no shutdown
+exit
+
+int vlan 20
+ip address 
+no shutdown
+exit
+
+int vlan 30
+ip address 
+no shutdown
+exit
+
+int vlan 40
+ip address 
+no shutdown
+exit
+
+int vlan 50
+ip address 
+no shutdown
+exit
+
+int vlan 60
+ip address 
+no shutdown
+exit
+
+int vlan 70
+ip address 
+no shutdown
+exit
+
+int vlan 80
+ip address 
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 
+default-router 
+
+ip dhcp pool 2
+network 
+default-router 
+
+ip dhcp pool 3
+network 
+default-router
+
+ip dhcp pool 4
+network 
+default-router 
+
+ip dhcp pool 5
+network 
+default-router 
+
+ip dhcp pool 6
+network 
+default-router 
+
+ip dhcp pool 7
+network 
+default-router 
+
+ip dhcp pool 8
+network 
+default-router 
+
+ip route 10.0.0.0 255.252.0.0 192.168.0.21
+ip route 10.8.0.0 255.252.0.0 192.168.0.21
+ip route 10.12.0.0 255.254.0.0 192.168.0.21
+ip route 10.14.0.0 255.254.0.0 192.168.0.21
+ip route 10.16.0.0 255.254.0.0 192.168.0.21
+ip route 10.18.0.0 255.254.0.0 192.168.0.21
+ip route 10.20.0.0 255.255.0.0 192.168.0.21
+
+!SW-GE
+
+ena
+conf t
+
+hostname SW-GE
+
+vtp mode client 
+vtp domain BOLOGNA
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
+!-------------------------------------------------
+
+!SW-ML-MI
+
+ena
+conf t
+
+hostname SW-ML-MI
+
+vtp mode server
+vtp domain MILANO
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+ip address 192.168.0.2 255.255.255.252
+no switchport
+no shutdown
+exit
+
+vlan 10
+name Sesto_San_Giovanni
+
+vlan 20
+name Cinisello_Balsamo 
+
+vlan 30
+name Legnano
+
+vlan 40
+name Rho
+
+vlan 50
+name Cologno_Monzese
+
+vlan 60
+name Pederno_Dugnano
+
+vlan 70
+name Rozzano
+
+vlan 80
+name San_Giuliano_Milanese
+
+int vlan 10
+ip address 10.20.191.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.20.159.254 255.255.224.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.20.63.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.20.217.254 255.255.254.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.20.175.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.20.207.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.20.127.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.20.215.254 255.255.248.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.20.176.0 255.255.240.0
+default-router 10.20.191.254
+
+ip dhcp pool 2
+network 10.20.128.0 255.255.224.0
+default-router 10.20.159.254 
+
+ip dhcp pool 3
+network 10.20.0.0 255.255.192.0
+default-router 10.20.63.254 
+
+ip dhcp pool 4
+network 10.20.216.0 255.255.254.0
+default-router 10.20.217.254 
+
+ip dhcp pool 5
+network 10.20.160.0 255.255.240.0
+default-router 10.20.175.254 
+
+ip dhcp pool 6
+network 10.20.192.0 255.255.240.0
+default-router 10.20.207.254
+
+ip dhcp pool 7
+network 10.20.64.0 255.255.192.0
+default-router 10.20.127.254
+
+ip dhcp pool 8
+network 10.20.208.0 255.255.248.0
+default-router 10.20.215.254 
+
+ip route 10.0.0.0 255.252.0.0 192.168.0.1
+ip route 10.8.0.0 255.252.0.0 192.168.0.1
+ip route 10.8.0.0 255.252.0.0 192.168.0.1
+ip route 10.12.0.0 255.254.0.0 192.168.0.1
+ip route 10.14.0.0 255.254.0.0 192.168.0.1
+ip route 10.16.0.0 255.254.0.0 192.168.0.1
+ip route 10.18.0.0 255.254.0.0 192.168.0.1
+
+!SW-MI
+
+ena
+conf t
+
+hostname SW-MI
+
+vtp mode client 
+vtp domain MILANO
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
