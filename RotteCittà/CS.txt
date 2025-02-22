@@ -1,0 +1,174 @@
+!SW-RM
+
+ena
+conf t
+
+hostname SV-ML-RM
+
+vtp mode server
+vtp domain ROMA
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+ip address 192.168.0.30 255.255.255.252
+no switchport
+no shutdown
+exit
+
+vlan 10
+name Guidonia_Montecelio
+
+vlan 20
+name Fiumicino 
+
+vlan 30
+name Pomezia
+
+vlan 40
+name Tivoli
+
+vlan 50
+name Anzio
+
+vlan 60
+name Velletri
+
+vlan 70
+name Civitavecchia
+
+vlan 80
+name Nettuno
+
+int vlan 10
+ip address 10.12.127.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.12.191.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.12.255.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.13.31.254 255.255.224.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.13.63.254 255.255.224.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.13.95.254 255.255.224.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.13.135.254 255.255.248.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.13.127.254 255.255.224.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.12.0.0 255.255.128.0
+default-router 10.12.127.254
+
+ip dhcp pool 2
+network 10.12.128.0 255.255.192.0
+default-router 10.12.191.254
+
+ip dhcp pool 3
+network 10.12.192.0 255.255.192.0
+default-router 10.12.255.254
+
+ip dhcp pool 4
+network 10.13.0.0 255.255.224.0
+default-router 10.13.31.254
+
+ip dhcp pool 5
+network 10.13.32.0 255.255.224.0
+default-router 10.13.63.254
+
+ip dhcp pool 6
+network 10.13.64.0 255.255.224.0
+default-router 10.13.95.254
+
+ip dhcp pool 7
+network 10.13.128.0 255.255.248.0
+default-router 10.13.135.254
+
+ip dhcp pool 8
+network 10.13.96.0 255.255.224.0
+default-router 10.13.127.254
+
+!SW-RO
+
+ena
+conf t
+
+hostname SV-RO
+
+vtp mode client 
+vtp domain ROMA
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
+!-------------------------------------------------
