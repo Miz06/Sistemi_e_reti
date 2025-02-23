@@ -774,7 +774,7 @@ no shutdown
 exit
 
 int vlan 60
-ip address 10.17.143.254 255.255.252.0
+ip address 10.17.139.254 255.255.252.0
 no shutdown
 exit
 
@@ -817,7 +817,7 @@ default-router 10.17.127.254
 
 ip dhcp pool 6
 network 10.17.136.0 255.255.252.0
-default-router 10.17.143.254
+default-router 10.17.139.254
 
 ip dhcp pool 7
 network 10.16.128.0 255.255.128.0
@@ -946,7 +946,7 @@ no shutdown
 exit
 
 int vlan 50
-ip address 10.16.223.254 255.255.240.0
+ip address 10.15.223.254 255.255.240.0
 no shutdown
 exit
 
@@ -989,7 +989,7 @@ network 10.15.192.0 255.255.240.0
 default-router 10.15.207.254
 
 ip dhcp pool 5
-network 10.16.208.0 255.255.240.0
+network 10.15.208.0 255.255.240.0
 default-router 10.16.223.254
 
 ip dhcp pool 6
