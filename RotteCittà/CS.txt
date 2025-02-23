@@ -11,8 +11,8 @@ vtp password cisco
 vtp version 2
 
 int gi1/0/2
-ip address 192.168.0.30 255.255.255.252
 no switchport
+ip address 192.168.0.30 255.255.255.252
 no shutdown
 exit
 
@@ -119,13 +119,7 @@ ip dhcp pool 8
 network 10.13.96.0 255.255.224.0
 default-router 10.13.127.254
 
-ip route 10.0.0.0 255.252.0.0 192.168.0.29
-ip route 10.4.0.0 255.252.0.0 192.168.0.29
-ip route 10.12.0.0 255.252.0.0 192.168.0.29
-ip route 10.14.0.0 255.254.0.0 192.168.0.29
-ip route 10.16.0.0 255.254.0.0 192.168.0.29
-ip route 10.18.0.0 255.254.0.0 192.168.0.29
-ip route 10.20.0.0 255.255.0.0 192.168.0.29
+ip route 0.0.0.0 0.0.0.0 192.168.0.29
 
 !SW-RM
 
@@ -194,8 +188,8 @@ vtp password cisco
 vtp version 2
 
 int gi1/0/2
-ip address 192.168.0.26 255.255.255.252
 no switchport
+ip address 192.168.0.26 255.255.255.252
 no shutdown
 exit
 
@@ -302,13 +296,7 @@ ip dhcp pool 8
 network 10.9.192.0 255.255.192.0
 default-router 10.9.255.254
 
-ip route 10.0.0.0 255.252.0.0 192.168.0.25
-ip route 10.4.0.0 255.252.0.0 192.168.0.25
-ip route 10.8.0.0 255.252.0.0 192.168.0.25
-ip route 10.14.0.0 255.254.0.0 192.168.0.25
-ip route 10.16.0.0 255.254.0.0 192.168.0.25
-ip route 10.18.0.0 255.254.0.0 192.168.0.25
-ip route 10.20.0.0 255.255.0.0 192.168.0.25
+no ip route 0.0.0.0 0.0.0.0 192.168.0.25
 
 !SW-BO
 
@@ -377,8 +365,8 @@ vtp password cisco
 vtp version 2
 
 int gi1/0/2
-ip address 192.168.0.22 255.255.255.252
 no switchport
+ip address 192.168.0.22 255.255.255.252
 no shutdown
 exit
 
@@ -389,7 +377,7 @@ vlan 20
 name Chiavari 
 
 vlan 30
-name Sestri Levante
+name Sestri_Levante
 
 vlan 40
 name Lavagna
@@ -401,48 +389,48 @@ vlan 60
 name Recco
 
 vlan 70
-name Santa Margherita Ligure
+name Santa_Margherita_Ligure
 
 vlan 80
 name Cogoleto
 
 int vlan 10
-ip address 
+ip address 10.5.63.254 255.255.192.0
 no shutdown
 exit
 
 int vlan 20
-ip address 
+ip address 10.5.127.254 255.255.192.0
 no shutdown
 exit
 
 int vlan 30
-ip address 
+ip address 10.5.191.254 255.255.192.0
 no shutdown
 exit
 
 int vlan 40
-ip address 
+ip address 10.6.16.254 255.255.255.0
 no shutdown
 exit
 
 int vlan 50
-ip address 
+ip address 10.4.127.254 255.255.128.0
 no shutdown
 exit
 
 int vlan 60
-ip address 
+ip address 10.4.255.254 255.255.128.0
 no shutdown
 exit
 
 int vlan 70
-ip address 
+ip address 10.6.15.254 255.255.240.0
 no shutdown
 exit
 
 int vlan 80
-ip address 
+ip address 10.5.255.254 255.255.192.0
 no shutdown
 exit
 
@@ -454,44 +442,38 @@ no shutdown
 exit
 
 ip dhcp pool 1
-network 
-default-router 
+network 10.5.0.0 255.255.192.0
+default-router 10.5.63.254
 
 ip dhcp pool 2
-network 
-default-router 
+network 10.5.64.0 255.255.192.0
+default-router 10.5.127.254
 
 ip dhcp pool 3
-network 
-default-router
+network 10.5.128.0 255.255.192.0
+default-router 10.5.191.254
 
 ip dhcp pool 4
-network 
-default-router 
+network 10.6.16.0 255.255.255.0
+default-router 10.6.16.254
 
 ip dhcp pool 5
-network 
-default-router 
+network 10.4.0.0 255.255.128.0
+default-router 10.4.127.254
 
 ip dhcp pool 6
-network 
-default-router 
+network 10.4.128.0 255.255.128.0
+default-router 10.4.255.254
 
 ip dhcp pool 7
-network 
-default-router 
+network 10.6.0.0 255.255.240.0
+default-router 10.6.15.254
 
 ip dhcp pool 8
-network 
-default-router 
+network 10.5.192.0 255.255.192.0
+default-router 10.5.255.255
 
-ip route 10.0.0.0 255.252.0.0 192.168.0.21
-ip route 10.8.0.0 255.252.0.0 192.168.0.21
-ip route 10.12.0.0 255.254.0.0 192.168.0.21
-ip route 10.14.0.0 255.254.0.0 192.168.0.21
-ip route 10.16.0.0 255.254.0.0 192.168.0.21
-ip route 10.18.0.0 255.254.0.0 192.168.0.21
-ip route 10.20.0.0 255.255.0.0 192.168.0.21
+ip route 0.0.0.0 0.0.0.0 192.168.0.21
 
 !SW-GE
 
@@ -501,7 +483,7 @@ conf t
 hostname SW-GE
 
 vtp mode client 
-vtp domain BOLOGNA
+vtp domain GENOVA
 vtp password cisco
 vtp version 2
 
@@ -560,8 +542,8 @@ vtp password cisco
 vtp version 2
 
 int gi1/0/2
-ip address 192.168.0.2 255.255.255.252
 no switchport
+ip address 192.168.0.2 255.255.255.252
 no shutdown
 exit
 
@@ -668,13 +650,7 @@ ip dhcp pool 8
 network 10.20.208.0 255.255.248.0
 default-router 10.20.215.254 
 
-ip route 10.0.0.0 255.252.0.0 192.168.0.1
-ip route 10.8.0.0 255.252.0.0 192.168.0.1
-ip route 10.8.0.0 255.252.0.0 192.168.0.1
-ip route 10.12.0.0 255.254.0.0 192.168.0.1
-ip route 10.14.0.0 255.254.0.0 192.168.0.1
-ip route 10.16.0.0 255.254.0.0 192.168.0.1
-ip route 10.18.0.0 255.254.0.0 192.168.0.1
+ip route 0.0.0.0 0.0.0.0 192.168.0.1
 
 !SW-MI
 
@@ -727,4 +703,362 @@ int fa0/15
 switchport access vlan 80
 no shutdown
 exit
+
+!-------------------------------------------------
+
+!SW-ML-PA
+
+ena
+conf t
+
+hostname SW-ML-PA
+
+vtp mode server
+vtp domain PALERMO
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+no switchport
+ip address 192.168.0.6 255.255.255.252
+no shutdown
+exit
+
+vlan 10
+name Bagheria
+
+vlan 20
+name Monreale 
+
+vlan 30
+name Carini
+
+vlan 40
+name Partinico
+
+vlan 50
+name Mislimeri
+
+vlan 60
+name Termini_Imerese
+
+vlan 70
+name Villabate
+
+vlan 80
+name Cefalù
+
+int vlan 10
+ip address 10.17.95.254 255.255.224.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.17.135.254 255.255.248.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.17.111.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.17.63.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.17.127.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.17.143.254 255.255.252.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.16.255.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.16.127.254 255.255.128.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.17.64.0 255.255.224.0
+default-router 10.17.95.254
+
+ip dhcp pool 2
+network 10.17.128.0 255.255.248.0
+default-router 10.17.135.254
+
+ip dhcp pool 3
+network 10.17.96.0 255.255.240.0
+default-router 10.17.111.254
+
+ip dhcp pool 4
+network 10.17.0.0 255.255.192.0
+default-router 10.17.63.254
+
+ip dhcp pool 5
+network 10.17.112.0 255.255.240.0
+default-router 10.17.127.254
+
+ip dhcp pool 6
+network 10.17.136.0 255.255.252.0
+default-router 10.17.143.254
+
+ip dhcp pool 7
+network 10.16.128.0 255.255.128.0
+default-router 10.16.255.254
+
+ip dhcp pool 8
+network 10.16.0.0 255.255.128.0
+default-router 10.16.127.254
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.5
+
+!SW-PA
+
+ena
+conf t
+
+hostname SW-PA
+
+vtp mode client 
+vtp domain PALERMO
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
+!-------------------------------------------------
+
+!SW-ML-NA
+
+ena
+conf t
+
+hostname SW-ML-NA
+
+vtp mode server
+vtp domain NAPOLI
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+no switchport
+ip address 192.168.0.18 255.255.255.252
+no shutdown
+exit
+
+vlan 10
+name Giugliano_in_Campania
+
+vlan 20
+name Torre_del_Greco
+
+vlan 30
+name Pozzuoli
+
+vlan 40
+name Casoria
+
+vlan 50
+name Castellamare_di_Stabia
+
+vlan 60
+name Afragola
+
+vlan 70
+name Marano_di_Napoli
+
+vlan 80
+name Acerra
+
+int vlan 10
+ip address 10.14.191.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.14.127.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.14.255.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.15.207.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.16.223.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.15.63.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.15.127.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.15.191.254 255.255.192.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.14.128.0 255.255.192.0
+default-router 10.14.191.254
+
+ip dhcp pool 2
+network 10.14.0.0 255.255.128.0
+default-router 10.12.191.254
+
+ip dhcp pool 3
+network 10.14.192.0 255.255.192.0
+default-router 10.14.255.254
+
+ip dhcp pool 4
+network 10.15.192.0 255.255.240.0
+default-router 10.15.207.254
+
+ip dhcp pool 5
+network 10.16.208.0 255.255.240.0
+default-router 10.16.223.254
+
+ip dhcp pool 6
+network 10.15.0.0 255.255.192.0
+default-router 10.15.63.254
+
+ip dhcp pool 7
+network 10.15.64.0 255.255.192.0
+default-router 10.15.127.254
+
+ip dhcp pool 8
+network 10.15.128.0 255.255.192.0
+default-router 10.15.191.254
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.17
+
+!SW-NA
+
+ena
+conf t
+
+hostname SW-NA
+
+vtp mode client 
+vtp domain NAPOLI
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
+!-------------------------------------------------
+
+
 
