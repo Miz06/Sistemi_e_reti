@@ -1060,5 +1060,355 @@ exit
 
 !-------------------------------------------------
 
+!SW-ML-TO
 
+ena
+conf t
+
+hostname SW-ML-TO
+
+vtp mode server
+vtp domain TORINO
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+no switchport
+ip address 192.168.0.14 255.255.255.252
+no shutdown
+exit
+
+vlan 10
+name Moncalieri
+
+vlan 20
+name Collegno 
+
+vlan 30
+name Rivoli
+
+vlan 40
+name NIchelino
+
+vlan 50
+name Settimo_Torinese
+
+vlan 60
+name Grugliasco
+
+vlan 70
+name Chieri
+
+vlan 80
+name Pinerolo
+
+int vlan 10
+ip address 10.2.23.254 255.255.248.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.2.15.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.1.255.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.1.191.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.1.127.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.1.63.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.0.127.254 255.255.128.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.0.255.254 255.255.128.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.2.16.0 255.255.248.0
+default-router 10.2.23.254
+
+ip dhcp pool 2
+network 10.2.0.0 255.255.240.0
+default-router 10.2.15.254
+
+ip dhcp pool 3
+network 10.1.192.0 255.255.192.0
+default-router 10.1.255.254
+
+ip dhcp pool 4
+network 10.1.128.0 255.255.192.0
+default-router 10.1.191.254
+
+ip dhcp pool 5
+network 10.1.64.0 255.255.192.0
+default-router 10.1.127.254
+
+ip dhcp pool 6
+network 10.1.0.0 255.255.192.0
+default-router 10.1.63.254
+
+ip dhcp pool 7
+network 10.0.0.0 255.255.128.0
+default-router 10.0.127.254
+
+ip dhcp pool 8
+network 10.0.128.0 255.255.128.0
+default-router 10.0.255.254
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.13
+
+!SW-TO
+
+ena
+conf t
+
+hostname SW-TO
+
+vtp mode client 
+vtp domain TORINO
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
+
+!-------------------------------------------------
+
+!SW-ML-FI
+
+ena
+conf t
+
+hostname SW-ML-FI
+
+vtp mode server
+vtp domain FIRENZE
+vtp password cisco
+vtp version 2
+
+int gi1/0/2
+no switchport
+ip address 192.168.0.10 255.255.255.252
+no shutdown
+exit
+
+vlan 10
+name Sandicci
+
+vlan 20
+name Sesto_Fiorentino 
+
+vlan 30
+name Empoli
+
+vlan 40
+name Campi_Bisenzio
+
+vlan 50
+name Bagno_a_Ripoli
+
+vlan 60
+name Figline_e_Incisa_Valdarno
+
+vlan 70
+name Fucecchio
+
+vlan 80
+name Pontassevie
+
+int vlan 10
+ip address 10.18.223.254 255.255.224.0
+no shutdown
+exit
+
+int vlan 20
+ip address 10.19.15.254 255.255.248.0
+no shutdown
+exit
+
+int vlan 30
+ip address 10.18.239.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 40
+ip address 10.18.63.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 50
+ip address 10.18.255.254 255.255.240.0
+no shutdown
+exit
+
+int vlan 60
+ip address 10.19.7.254 255.255.248.0
+no shutdown
+exit
+
+int vlan 70
+ip address 10.18.127.254 255.255.192.0
+no shutdown
+exit
+
+int vlan 80
+ip address 10.18.191.254 255.255.192.0
+no shutdown
+exit
+
+ip routing 
+
+int gi1/0/1
+switchport mode trunk
+no shutdown
+exit
+
+ip dhcp pool 1
+network 10.18.192.0 255.255.224.0
+default-router 10.18.223.254
+
+ip dhcp pool 2
+network 10.19.8.0 255.255.248.0
+default-router 10.19.15.254
+
+ip dhcp pool 3
+network 10.18.224.0 255.255.240.0
+default-router 10.18.239.254
+
+ip dhcp pool 4
+network 10.18.0.0 255.255.192.0
+default-router 10.18.63.254
+
+ip dhcp pool 5
+network 10.18.240.0 255.255.240.0
+default-router 10.18.255.254
+
+ip dhcp pool 6
+network 10.19.0.0 255.255.248.0
+default-router 10.19.7.254
+
+ip dhcp pool 7
+network 10.18.64.0 255.255.192.0
+default-router 10.18.127.254
+
+ip dhcp pool 8
+network 10.18.128.0 255.255.192.0
+default-router 10.18.191.254
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.9
+
+!SW-FI
+
+ena
+conf t
+
+hostname SW-FI
+
+vtp mode client 
+vtp domain FIRENZE
+vtp password cisco
+vtp version 2
+
+int fa0/8
+switchport access vlan 10
+no shutdown
+exit
+
+int fa0/9
+switchport access vlan 20
+no shutdown
+exit
+
+int fa0/10
+switchport access vlan 30
+no shutdown
+exit
+
+int fa0/11
+switchport access vlan 40
+no shutdown
+exit
+
+int fa0/12
+switchport access vlan 50
+no shutdown
+exit
+
+int fa0/13
+switchport access vlan 60
+no shutdown
+exit
+
+int fa0/14
+switchport access vlan 70
+no shutdown
+exit
+
+int fa0/15
+switchport access vlan 80
+no shutdown
+exit
 
