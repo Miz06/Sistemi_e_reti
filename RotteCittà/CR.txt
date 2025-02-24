@@ -21,6 +21,8 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
+network 10.20.0.0 0.0.255.255 area 1
+network 192.168.0.0 0.0.0.3 area 2
 
 !RT-GE
 ena
@@ -51,6 +53,8 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0 
+network 10.4.0.0 0.3.255.255 area 1
+network 192.168.0.20 0.0.0.3 area 2
 
 !RT-BO
 ena
@@ -75,6 +79,8 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
+network 10.8.0.0 0.3.255.255 area 1
+network 192.168.0.24 0.0.0.3 area 2
 
 !RT-PA
 ena
@@ -112,6 +118,11 @@ exit
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
 
+router ospf 1
+network 11.0.0.0 0.0.0.63 area 0
+network 10.16.0.0 0.1.255.255 area 1
+network 192.168.0.4 0.0.0.3 area 2
+
 !RT-FI
 ena
 conf t
@@ -141,6 +152,8 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
+network 10.18.0.0 0.1.255.255 area 1
+network 192.168.0.10 0.0.0.3 area 2
 
 !RT-RM
 ena
@@ -171,6 +184,8 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
+network 10.12.0.0 0.1.255.255 area 1
+network 192.168.0.28 0.0.0.3 area 2
 
 !RT-NA
 ena
@@ -207,6 +222,8 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
+network 10.14.0.0 0.1.255.255 area 1
+network 192.168.0.16 0.0.0.3 area 2
 
 !RT-TO
 ena
@@ -237,3 +254,5 @@ exit
 
 router ospf 1
 network 11.0.0.0 0.0.0.63 area 0
+network 10.0.0.0 0.3.255.255 area 1
+network 192.168.0.12 0.0.0.3 area 2

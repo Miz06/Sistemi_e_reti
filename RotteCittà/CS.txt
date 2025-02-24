@@ -119,8 +119,6 @@ ip dhcp pool 8
 network 10.13.96.0 255.255.224.0
 default-router 10.13.127.254
 
-ip route 0.0.0.0 0.0.0.0 192.168.0.29
-
 !SW-RM
 
 ena
@@ -295,8 +293,6 @@ default-router 10.9.191.254
 ip dhcp pool 8
 network 10.9.192.0 255.255.192.0
 default-router 10.9.255.254
-
-no ip route 0.0.0.0 0.0.0.0 192.168.0.25
 
 !SW-BO
 
@@ -473,8 +469,6 @@ ip dhcp pool 8
 network 10.5.192.0 255.255.192.0
 default-router 10.5.255.255
 
-ip route 0.0.0.0 0.0.0.0 192.168.0.21
-
 !SW-GE
 
 ena
@@ -649,8 +643,6 @@ default-router 10.20.127.254
 ip dhcp pool 8
 network 10.20.208.0 255.255.248.0
 default-router 10.20.215.254 
-
-ip route 0.0.0.0 0.0.0.0 192.168.0.1
 
 !SW-MI
 
@@ -827,8 +819,6 @@ ip dhcp pool 8
 network 10.16.0.0 255.255.128.0
 default-router 10.16.127.254
 
-ip route 0.0.0.0 0.0.0.0 192.168.0.5
-
 !SW-PA
 
 ena
@@ -1003,8 +993,6 @@ default-router 10.15.127.254
 ip dhcp pool 8
 network 10.15.128.0 255.255.192.0
 default-router 10.15.191.254
-
-ip route 0.0.0.0 0.0.0.0 192.168.0.17
 
 !SW-NA
 
@@ -1181,8 +1169,6 @@ ip dhcp pool 8
 network 10.0.128.0 255.255.128.0
 default-router 10.0.255.254
 
-ip route 0.0.0.0 0.0.0.0 192.168.0.13
-
 !SW-TO
 
 ena
@@ -1357,8 +1343,6 @@ default-router 10.18.127.254
 ip dhcp pool 8
 network 10.18.128.0 255.255.192.0
 default-router 10.18.191.254
-
-ip route 0.0.0.0 0.0.0.0 192.168.0.9
 
 !SW-FI
 
