@@ -123,6 +123,8 @@ router ospf 1
 network 10.12.0.0 0.1.255.255 area 11
 network 192.168.0.28 0.0.0.3 area 12
 
+ip route 0.0.0.0 0.0.0.0 192.168.0.31
+
 !SW-RM
 
 ena
@@ -301,6 +303,8 @@ default-router 10.9.255.254
 router ospf 1
 network 10.8.0.0 0.3.255.255 area 15
 network 192.168.0.24 0.0.0.3 area 16
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.27
 
 !SW-BO
 
@@ -481,6 +485,8 @@ router ospf 1
 network 10.4.0.0 0.3.255.255 area 13
 network 192.168.0.20 0.0.0.3 area 14
 
+ip route 0.0.0.0 0.0.0.0 192.168.0.23
+
 !SW-GE
 
 ena
@@ -659,6 +665,8 @@ default-router 10.20.215.254
 router ospf 1
 network 10.20.0.0 0.0.255.255 area 1
 network 192.168.0.0 0.0.0.3 area 2
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.1
 
 !SW-MI
 
@@ -839,6 +847,8 @@ router ospf 1
 network 10.16.0.0 0.1.255.255 area 3
 network 192.168.0.4 0.0.0.3 area 4
 
+ip route 0.0.0.0 0.0.0.0 192.168.0.7
+
 !SW-PA
 
 ena
@@ -1017,6 +1027,8 @@ default-router 10.15.191.254
 router ospf 1
 network 10.14.0.0 0.1.255.255 area 9
 network 192.168.0.16 0.0.0.3 area 10
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.19
 
 !SW-NA
 
@@ -1197,6 +1209,8 @@ router ospf 1
 network 10.0.0.0 0.3.255.255 area 7
 network 192.168.0.12 0.0.0.3 area 8
 
+ip route 0.0.0.0 0.0.0.0 192.168.0.15
+
 !SW-TO
 
 ena
@@ -1375,6 +1389,8 @@ default-router 10.18.191.254
 router ospf 1
 network 10.18.0.0 0.1.255.255 area 5
 network 192.168.0.10 0.0.0.3 area 6
+
+ip route 0.0.0.0 0.0.0.0 192.168.0.11
 
 !SW-FI
 
