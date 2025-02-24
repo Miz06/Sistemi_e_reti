@@ -20,9 +20,9 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.20.0.0 0.0.255.255 area 1
-network 192.168.0.0 0.0.0.3 area 2
+network 11.0.0.4 0.0.0.3 area 0
+network 11.0.0.0 0.0.0.3 area 0
+network 192.168.0.0 0.0.0.3 area 1
 
 !RT-GE
 ena
@@ -52,9 +52,10 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0 
-network 10.4.0.0 0.3.255.255 area 13
-network 192.168.0.20 0.0.0.3 area 14
+network 11.0.0.0 0.0.0.3 area 0 
+network 11.0.0.40 0.0.0.3 area 0 
+network 11.0.0.44 0.0.0.3 area 0 
+network 192.168.0.20 0.0.0.3 area 7
 
 !RT-BO
 ena
@@ -78,9 +79,9 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.8.0.0 0.3.255.255 area 15
-network 192.168.0.24 0.0.0.3 area 16
+network 11.0.0.32 0.0.0.3 area 0
+network 11.0.0.40 0.0.0.3 area 0
+network 192.168.0.24 0.0.0.3 area 8
 
 !RT-PA
 ena
@@ -116,12 +117,11 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-
-router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.16.0.0 0.1.255.255 area 3
-network 192.168.0.4 0.0.0.3 area 4
+network 11.0.0.4 0.0.0.3 area 0
+network 11.0.0.8 0.0.0.3 area 0
+network 11.0.0.24 0.0.0.3 area 0
+network 11.0.0.12 0.0.0.3 area 0
+network 192.168.0.4 0.0.0.3 area 2
 
 !RT-FI
 ena
@@ -151,9 +151,10 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.18.0.0 0.1.255.255 area 5
-network 192.168.0.10 0.0.0.3 area 6
+network 11.0.0.8 0.0.0.3 area 0
+network 11.0.0.20 0.0.0.3 area 0
+network 11.0.0.16 0.0.0.3 area 0
+network 192.168.0.10 0.0.0.3 area 3
 
 !RT-RM
 ena
@@ -183,9 +184,10 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.12.0.0 0.1.255.255 area 11
-network 192.168.0.28 0.0.0.3 area 12
+network 11.0.0.24 0.0.0.3 area 0
+network 11.0.0.20 0.0.0.3 area 0
+network 11.0.0.28 0.0.0.3 area 0
+network 192.168.0.28 0.0.0.3 area 6
 
 !RT-NA
 ena
@@ -221,9 +223,11 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.14.0.0 0.1.255.255 area 9
-network 192.168.0.16 0.0.0.3 area 10
+network 11.0.0.32 0.0.0.3 area 0
+network 11.0.0.28 0.0.0.3 area 0
+network 11.0.0.16 0.0.0.3 area 0
+network 11.0.0.36 0.0.0.3 area 0
+network 192.168.0.16 0.0.0.3 area 5
 
 !RT-TO
 ena
@@ -253,6 +257,7 @@ no shutdown
 exit
 
 router ospf 1
-network 11.0.0.0 0.0.0.63 area 0
-network 10.0.0.0 0.3.255.255 area 7
-network 192.168.0.12 0.0.0.3 area 8
+network 11.0.0.12 0.0.0.3 area 0
+network 11.0.0.36 0.0.0.3 area 0
+network 11.0.0.44 0.0.0.3 area 0
+network 192.168.0.12 0.0.0.3 area 4
