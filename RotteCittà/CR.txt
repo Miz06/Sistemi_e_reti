@@ -95,7 +95,7 @@ exit
 
 int fa2/0
 ip ospf cost 3
-ip address 11.0.0.25 255.255.255.252
+ip address 11.0.0.26 255.255.255.252
 no shutdown
 exit
 
